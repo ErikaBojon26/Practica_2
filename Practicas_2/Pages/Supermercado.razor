@@ -1,0 +1,70 @@
+﻿@page "/Ejercicio_supermercado"
+
+
+<h3>Supermercado   </h3>
+<div>
+    <label>El total de la compra es :</label>
+    <input type="number" @bind-value="@Dinero_Compra" />
+
+</div>
+<div>
+
+    <label>Ingrese dos dijitos para hacer el descuento :</label>
+    <input type="number" @bind-value="@NumeroAlazar" />
+    <button @onclick="Calcular"> calcular</button>
+
+
+</div>
+
+<div>
+    <div>
+        la compra total es  @Dinero_Compra
+    </div>
+
+    <div>
+        el numero de dos cifras es  @NumeroAlazar
+    </div>
+
+    <div>El total a pagar es $ @Dinero_Compra - % @Descuento el descuento obtenido fue de @DescuentoObtenido%</div>
+
+    <div>el descuento Optenido  es $ @total</div>
+</div>
+
+@code {
+    [Parameter]
+    public int NumeroAlazar { get; set; }
+    public double Descuento { get; set; }
+    public double DescuentoObtenido { get; set; }
+    public int Dinero_Compra { get; set; }
+    public double total { get; set; }
+    public string error { get; set; }
+
+
+    void Calcular()
+    {
+        @if (NumeroAlazar < 100 && NumeroAlazar > 73)
+        {
+            Descuento = Dinero_Compra * .20;
+            DescuentoObtenido = 20;
+            total = Dinero_Compra - Descuento;
+        }
+        else
+        {
+            if (NumeroAlazar < 10 || NumeroAlazar >= 100)
+            {
+                error = "error solo dijitos de dos dijitos ";
+            }
+            else
+            {
+                Descuento = Dinero_Compra * .15;
+                DescuentoObtenido = 15;
+                total = Dinero_Compra - Descuento;
+            }
+
+
+        }
+
+    }
+
+}
+

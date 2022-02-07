@@ -1,0 +1,28 @@
+﻿
+
+@page "/Alfabeto"
+
+<h3>Transformacion_alfabeto</h3>
+
+<div>
+    <label>Escribe el texto que deseas convertir :</label>
+    <input type="text" @bind-value="@Palabra" />
+    <button @onclick="Convertir"> Tranformar </button>
+</div>
+<div>
+    <div>
+        Se a convertido en minusculas: @Minuscula
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Palabra { get; set; }
+    public string Minuscula { get; set; }
+
+    void Convertir()
+    {
+        Minuscula = Palabra.ToLower();
+
+    }
+}

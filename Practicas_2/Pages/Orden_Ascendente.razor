@@ -1,0 +1,61 @@
+﻿
+@page "/Orden_Ascendente"
+
+
+<h3>Orden_Ascendente</h3>
+<div>
+    <label>Ingrese un numero que deseas ordenar :</label>
+    <input type="number" @bind-value="@Numero1" />
+
+</div>
+<div>
+
+    <label>Ingrese un numero que deseas ordenar:</label>
+    <input type="number" @bind-value="@Numero2" />
+
+
+</div>
+<div>
+
+    <button @onclick="Calcular"> calcular</button>
+
+</div>
+<div>
+
+    <div>
+        los numeros son: @Numero1 , @Numero2
+    </div>
+
+    <div>el orden ascendente es: @Resultado, @Resultado2 </div>
+
+</div>
+
+@code {
+    [Parameter]
+    public int Numero1 { get; set; }
+    public int Numero2 { get; set; }
+    public int Resultado { get; set; }
+    public int Resultado2 { get; set; }
+
+
+    void Calcular()
+    {
+        @if (Numero1 < Numero2)
+        {
+            Resultado = Numero1;
+            Resultado2 = Numero2;
+        }
+        else
+        {
+            Resultado = Numero2;
+            Resultado2 = Numero1;
+
+
+        }
+
+
+
+    }
+
+}
+
